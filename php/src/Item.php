@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GildedRose;
 
-class Item
+abstract class Item
 {
     public function __construct(
         public string $name, 
@@ -33,4 +33,6 @@ class Item
         }
         $this->quality -= 1;
     }
+
+    abstract public function update(): void;
 }
