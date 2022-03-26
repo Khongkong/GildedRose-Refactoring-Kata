@@ -21,17 +21,17 @@ final class GildedRose
                 continue;
             }
             if ($item->name === 'Aged Brie') {
-                $this->increaseQuality($item);
+                $item->increaseQuality();
             } elseif ($item->name === 'Backstage passes to a TAFKAL80ETC concert') {
-                $this->increaseQuality($item);
+                $item->increaseQuality();
                 if ($item->sellIn < 11) {
-                    $this->increaseQuality($item);
+                    $item->increaseQuality();
                 }
                 if ($item->sellIn < 6) {
-                    $this->increaseQuality($item);
+                    $item->increaseQuality();
                 }
             } else {
-                $this->decreaseQuality($item);
+                $item->decreaseQuality();
             }
             $item->sellIn -= 1;
 
@@ -39,28 +39,12 @@ final class GildedRose
                 continue;
             }
             if ($item->name === 'Aged Brie') {
-                $this->increaseQuality($item);
+                $item->increaseQuality();
             } elseif ($item->name === 'Backstage passes to a TAFKAL80ETC concert') {
                 $item->quality = 0;
             } else {
-                $this->decreaseQuality($item);
+                $item->decreaseQuality();
             }
         }
-    }
-
-    private function increaseQuality(Item $item): void
-    {
-        if ($item->quality >= 50) {
-            return;
-        }
-        $item->quality += 1;
-    }
-
-    private function decreaseQuality(Item $item): void
-    {
-        if ($item->quality <= 0) {
-            return;
-        }
-        $item->quality -= 1;
     }
 }
