@@ -7,9 +7,9 @@ namespace GildedRose;
 abstract class Item
 {
     public function __construct(
-        public string $name, 
-        public int $sellIn, 
-        public int $quality
+        protected string $name, 
+        protected int $sellIn, 
+        protected int $quality
     ) {
     }
 
@@ -32,6 +32,21 @@ abstract class Item
             return;
         }
         $this->quality -= 1;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getSellIn(): int
+    {
+        return $this->sellIn;
+    }
+
+    public function getQuality(): int
+    {
+        return $this->quality;
     }
 
     abstract public function update(): void;
