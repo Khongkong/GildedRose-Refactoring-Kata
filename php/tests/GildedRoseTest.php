@@ -8,6 +8,7 @@ use GildedRose\GildedRose;
 use GildedRose\Item;
 use GildedRose\Item\AgedBrieItem;
 use GildedRose\Item\BackstagePassItem;
+use GildedRose\Item\ConjuredItem;
 use GildedRose\Item\NormalItem;
 use GildedRose\Item\SulfurasItem;
 use PHPUnit\Framework\TestCase;
@@ -136,11 +137,11 @@ class GildedRoseTest extends TestCase
     }
 
     /**
-     * @todo To be implemented
+     * @test
      */
     public function conjuredItemWithQualityDecreasedByTwice(): void
     {
-        $items = [new NormalItem('Conjured Mana Cake', 1, 50)];
+        $items = [new ConjuredItem('Conjured Mana Cake', 1, 50)];
         $gildedRose = new GildedRose($items);
         $gildedRose->updateQuality();
         $this->assertSame(48, $items[0]->quality);
